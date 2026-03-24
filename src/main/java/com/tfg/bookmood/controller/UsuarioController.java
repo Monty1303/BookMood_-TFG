@@ -1,5 +1,6 @@
 package com.tfg.bookmood.controller;
 
+import com.tfg.bookmood.dto.UsuarioLoginRequest;
 import com.tfg.bookmood.dto.UsuarioRegisterRequest;
 import com.tfg.bookmood.model.Libro;
 import com.tfg.bookmood.model.Usuario;
@@ -31,6 +32,19 @@ public class UsuarioController {
         return  usuarioRepository.save(usuario);
     }
 
+    @PostMapping("/login")
+    public Usuario login(@RequestBody UsuarioLoginRequest request){
+        Usuario usuario = usuarioRepository.findByEmail(request.email)
+                .orElseThrow(()-> new RuntimeException("Usuario no encontrado"));
+        if (!usuario.getPassword().equals(request.password)){
+            throw new RuntimeException("Contraseaña incorrecta");
+        }
+        return usuario;
+
+    }
+
+
+
     @GetMapping("/{id}")
 
     public Usuario getUsuarioById (@PathVariable Long id){
@@ -45,14 +59,14 @@ public class UsuarioController {
                 .map(usuarioLibro -> usuarioLibro.getLibro())
                 .collect(Collectors.toList());
     }
-    @GetMapping ("/{id}/ leidos")
+    @GetMapping ("/{id}/leidos")
     public List<Libro> getLeido (@PathVariable Long id){
         return  usuarioLibroRepository.findByUsuarioIdUsuarioAndLeidoTrue(id)
                 .stream()
                 .map (usuarioLibro -> usuarioLibro.getLibro())
                 .collect(Collectors.toList());
     }
-    @GetMapping ("{id}/quiero-leer")
+    @GetMapping ("{id}/quieroLeer")
     public  List<Libro> getQuieroLeer (@PathVariable Long id){
         return  usuarioLibroRepository.findByUsuarioIdUsuarioAndQuieroLeerTrue(id)
                 .stream()
