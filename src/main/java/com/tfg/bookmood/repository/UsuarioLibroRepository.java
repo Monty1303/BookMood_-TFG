@@ -12,4 +12,8 @@ public interface UsuarioLibroRepository extends JpaRepository<UsuarioLibro, Long
     List<UsuarioLibro> findByUsuarioIdUsuario (Long idUsuario);
 
     List<UsuarioLibro> findByUsuarioIdUsuarioAndFavoritoTrue(Long idUsuario);
+
+    List<UsuarioLibro> findByUsuarioIdUsuarioAndLeidoTrue (Long idUsaurio);
+
+    List<UsuarioLibro> findByUsuarioIdUsuarioAndQuieroLeerTrue (Long idUsuario);
 }

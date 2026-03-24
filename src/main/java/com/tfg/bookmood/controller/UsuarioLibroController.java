@@ -1,7 +1,7 @@
 package com.tfg.bookmood.controller;
 
 
-import com.tfg.bookmood.dto.UserBookRequest;
+import com.tfg.bookmood.dto.UsuarioLibroRequest;
 import com.tfg.bookmood.model.Libro;
 import com.tfg.bookmood.model.Usuario;
 import com.tfg.bookmood.model.UsuarioLibro;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping ("/user-books")
+@RequestMapping ("/usuarioLibro")
 public class UsuarioLibroController {
 
     private final UsuarioLibroRepository usuarioLibroRepository;
@@ -30,12 +30,12 @@ public class UsuarioLibroController {
 
     @PostMapping
 
-    public UsuarioLibro upsertUserBook(@RequestBody UserBookRequest req) {
-        Usuario usuario = usuarioRepository.findById(req.userId).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    public UsuarioLibro upsertUserBook(@RequestBody UsuarioLibroRequest req) {
+        Usuario usuario = usuarioRepository.findById(req.idUsuario).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        Libro libro = libroRepository.findById(req.bookId).orElseThrow(()-> new RuntimeException(" Libro no encontrado "));
+        Libro libro = libroRepository.findById(req.idLibro).orElseThrow(()-> new RuntimeException(" Libro no encontrado "));
 
-        UsuarioLibro ul = usuarioLibroRepository.findByUsuarioIdUsuarioAndLibroIdLibro(req.userId, req.bookId).orElseGet(()->{
+        UsuarioLibro ul = usuarioLibroRepository.findByUsuarioIdUsuarioAndLibroIdLibro(req.idUsuario, req.idLibro).orElseGet(()->{
             UsuarioLibro nuevo = new UsuarioLibro();
             nuevo.setUsuario(usuario);
             nuevo.setLibro(libro);
@@ -49,9 +49,9 @@ public class UsuarioLibroController {
         return usuarioLibroRepository.save(ul);
 
     }
-    @GetMapping("/{userId}")
+    @GetMapping("/{idUsuario}")
 
-    public List<UsuarioLibro> getUserBooks (@PathVariable Long userId){
-        return usuarioLibroRepository.findByUsuarioIdUsuario(userId);
+    public List<UsuarioLibro> getUserBooks (@PathVariable Long idUsuario){
+        return usuarioLibroRepository.findByUsuarioIdUsuario(idUsuario);
     }
 }

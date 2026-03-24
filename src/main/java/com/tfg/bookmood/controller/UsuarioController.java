@@ -1,27 +1,62 @@
 package com.tfg.bookmood.controller;
 
+import com.tfg.bookmood.dto.UsuarioRegisterRequest;
 import com.tfg.bookmood.model.Libro;
+import com.tfg.bookmood.model.Usuario;
 import com.tfg.bookmood.repository.UsuarioLibroRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.tfg.bookmood.repository.UsuarioRepository;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping ("/users")
+@RequestMapping ("/usuario")
 public class UsuarioController {
+    private final UsuarioRepository usuarioRepository;
     private final UsuarioLibroRepository usuarioLibroRepository;
 
-    public  UsuarioController (UsuarioLibroRepository usuarioLibroRepository){
+    public  UsuarioController (UsuarioLibroRepository usuarioLibroRepository, UsuarioRepository usuarioRepository){
         this.usuarioLibroRepository = usuarioLibroRepository;
+        this.usuarioRepository = usuarioRepository;
     }
-    @GetMapping ("/{userId}/favorites")
-     public List<Libro> getFavorites (@PathVariable Long userId){
-        return usuarioLibroRepository.findByUsuarioIdUsuarioAndFavoritoTrue(userId)
+    @PostMapping ("/register")
+
+    public Usuario register (@RequestBody UsuarioRegisterRequest request){
+        Usuario usuario = new Usuario();
+        usuario.setNombre (request.nombre);
+        usuario.setEmail (request.email);
+        usuario.setPassword (request.password);
+
+        return  usuarioRepository.save(usuario);
+    }
+
+    @GetMapping("/{id}")
+
+    public Usuario getUsuarioById (@PathVariable Long id){
+        return usuarioRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException(" Usuario no registrado "));
+    }
+
+    @GetMapping ("/{id}/favoritos")
+     public List<Libro> getFavorito (@PathVariable Long  id){
+        return usuarioLibroRepository.findByUsuarioIdUsuarioAndFavoritoTrue(id)
                 .stream()
-                .map(ul->ul.getLibro())
-                .toList();
+                .map(usuarioLibro -> usuarioLibro.getLibro())
+                .collect(Collectors.toList());
+    }
+    @GetMapping ("/{id}/ leidos")
+    public List<Libro> getLeido (@PathVariable Long id){
+        return  usuarioLibroRepository.findByUsuarioIdUsuarioAndLeidoTrue(id)
+                .stream()
+                .map (usuarioLibro -> usuarioLibro.getLibro())
+                .collect(Collectors.toList());
+    }
+    @GetMapping ("{id}/quiero-leer")
+    public  List<Libro> getQuieroLeer (@PathVariable Long id){
+        return  usuarioLibroRepository.findByUsuarioIdUsuarioAndQuieroLeerTrue(id)
+                .stream()
+                .map (usuarioLibro -> usuarioLibro.getLibro())
+                .collect(Collectors.toList());
     }
 }
