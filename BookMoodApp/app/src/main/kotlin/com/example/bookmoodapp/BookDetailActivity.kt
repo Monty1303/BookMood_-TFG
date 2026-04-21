@@ -25,7 +25,7 @@ class BookDetailActivity : AppCompatActivity() {
     private lateinit var btnWantToRead: Button
 
     private var bookId: Long = -1
-    private var userId: Long = 1
+    private var userId: Long = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
