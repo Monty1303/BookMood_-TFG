@@ -6,16 +6,24 @@ import com.example.bookmoodapp.R
 import com.example.bookmoodapp.model.Libro
 import android.view.ViewGroup
 import android.view.LayoutInflater
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+
+
+
 
 
 
 
 class BookAdapter (
-    private val books: List<Libro>
+    private val books: List<Libro>,
+    private val onBookClick: (Libro) -> Unit
 ): RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
-    class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textBookTitle: TextView = itemView.findViewById(R.id.textBookTitle)
         val textBookAuthor: TextView = itemView.findViewById(R.id.textBookAuthor)
+        val imageBookCover: ImageView = itemView.findViewById(R.id.imageBookCover)
+
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -26,6 +34,10 @@ class BookAdapter (
         val book = books[position]
         holder.textBookTitle.text = book.titulo
         holder.textBookAuthor.text = book.autor ?:"Autor no disponible"
+        Glide.with(holder.itemView.context)
+            .load(book.portadaUrl)
+            .into(holder.imageBookCover)
+        holder.itemView.setOnClickListener { onBookClick(book) }
     }
     override fun getItemCount(): Int = books.size
 
