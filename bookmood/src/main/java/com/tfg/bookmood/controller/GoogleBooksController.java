@@ -23,4 +23,12 @@ public class GoogleBooksController {
         return googleBooksService.buscarLibrosPorTitulo(titulo);
     }
 
+    @GetMapping("/importar")
+    public String importarLibros(
+            @RequestParam Long moodId,
+            @RequestParam String titulo
+    ){
+        return  googleBooksService.importarLibrosPorMood(moodId,titulo);
+    }
+
 }

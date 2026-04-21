@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface LibroRepository extends JpaRepository<Libro, Long> {
     @Query("""
@@ -14,4 +15,5 @@ public interface LibroRepository extends JpaRepository<Libro, Long> {
     WHERE lea.estadoAnimo.idEstadoAnimo = :moodId
 """)
     List<Libro> findRecommendedByMood(@Param("moodId") Long moodId);
+    Optional<Libro> findByTituloAndAutor (String titulo, String autor);
 }

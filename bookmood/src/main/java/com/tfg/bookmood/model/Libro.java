@@ -40,7 +40,7 @@ public class Libro {
         this.sinopsis = sinopsis;
     }
 
-    public void setPortada_url(String portadaUrl) {
+    public void setPortadaUrl(String portadaUrl) {
         this.portadaUrl = portadaUrl;
     }
 

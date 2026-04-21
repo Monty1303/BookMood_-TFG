@@ -1,6 +1,6 @@
 package com.tfg.bookmood.dto;
 
-public class UsuarioRegisterRequest {
+public class gitcleUsuarioRegisterRequest {
     public String nombre;
     public String email;
     public String password;

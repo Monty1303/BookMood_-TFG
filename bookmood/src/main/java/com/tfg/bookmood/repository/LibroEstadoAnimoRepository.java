@@ -4,4 +4,5 @@ import com.tfg.bookmood.model.LibroEstadoAnimo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LibroEstadoAnimoRepository extends JpaRepository<LibroEstadoAnimo, Long> {
+    boolean existsByLibroIdLibroAndEstadoAnimoIdEstadoAnimo ( Long idLibro, Long idEstadoAnimo );
 }

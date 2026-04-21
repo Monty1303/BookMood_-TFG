@@ -2,12 +2,14 @@ package com.tfg.bookmood.controller;
 
 import com.tfg.bookmood.dto.UsuarioLoginRequest;
 import com.tfg.bookmood.dto.UsuarioRegisterRequest;
+import com.tfg.bookmood.dto.UsuarioResponse;
 import com.tfg.bookmood.model.Libro;
 import com.tfg.bookmood.model.Usuario;
 import com.tfg.bookmood.repository.UsuarioLibroRepository;
 import com.tfg.bookmood.repository.UsuarioRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,19 +30,24 @@ public class UsuarioController {
         usuario.setNombre (request.nombre);
         usuario.setEmail (request.email);
         usuario.setPassword (request.password);
+        usuario.setFechaRegistro(LocalDate.now());
 
         return  usuarioRepository.save(usuario);
     }
 
     @PostMapping("/login")
-    public Usuario login(@RequestBody UsuarioLoginRequest request){
+    public Usuario login(@RequestBody UsuarioLoginRequest request) {
         Usuario usuario = usuarioRepository.findByEmail(request.email)
-                .orElseThrow(()-> new RuntimeException("Usuario no encontrado"));
-        if (!usuario.getPassword().equals(request.password)){
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        if (!usuario.getPassword().equals(request.password)) {
             throw new RuntimeException("Contraseaña incorrecta");
         }
-        return usuario;
+        UsuarioResponse response = new UsuarioResponse();
+        response.idUsuario = usuario.getIdUsuario();
+        response.nombre = usuario.getNombre();
+        response.email = usuario.getEmail();
 
+        return usuario;
     }
 
 
