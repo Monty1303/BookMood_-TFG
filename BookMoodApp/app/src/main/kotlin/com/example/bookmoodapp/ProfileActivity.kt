@@ -1,15 +1,15 @@
 package com.example.bookmoodapp
+
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 import com.example.bookmoodapp.network.RetrofitClient
 import com.example.bookmoodapp.ui.BookAdapter
 import kotlinx.coroutines.launch
-
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -34,34 +34,84 @@ class ProfileActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("bookmood", MODE_PRIVATE)
         userId = sharedPref.getLong("userId", -1)
 
+        if (userId == -1L) {
+            Toast.makeText(this, "Usuario no autenticado", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+
         btnFavoritos.setOnClickListener { cargarFavoritos() }
         btnLeidos.setOnClickListener { cargarLeidos() }
         btnQuieroLeer.setOnClickListener { cargarQuieroLeer() }
+
+        cargarFavoritos()
     }
 
     private fun cargarFavoritos() {
         lifecycleScope.launch {
-            val response = RetrofitClient.api.getFavoritos(userId)
-            if (response.isSuccessful) {
-                recyclerView.adapter = BookAdapter(response.body() ?: emptyList()) {}
+            try {
+                val response = RetrofitClient.api.getFavoritos(userId)
+                if (response.isSuccessful) {
+                    recyclerView.adapter = BookAdapter(response.body() ?: emptyList()) {}
+                } else {
+                    Toast.makeText(
+                        this@ProfileActivity,
+                        "Error al cargar favoritos",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(
+                    this@ProfileActivity,
+                    "Fallo: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
 
     private fun cargarLeidos() {
         lifecycleScope.launch {
-            val response = RetrofitClient.api.getLeidos(userId)
-            if (response.isSuccessful) {
-                recyclerView.adapter = BookAdapter(response.body() ?: emptyList()) {}
+            try {
+                val response = RetrofitClient.api.getLeidos(userId)
+                if (response.isSuccessful) {
+                    recyclerView.adapter = BookAdapter(response.body() ?: emptyList()) {}
+                } else {
+                    Toast.makeText(
+                        this@ProfileActivity,
+                        "Error al cargar leídos",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(
+                    this@ProfileActivity,
+                    "Fallo: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
 
     private fun cargarQuieroLeer() {
         lifecycleScope.launch {
-            val response = RetrofitClient.api.getQuieroLeer(userId)
-            if (response.isSuccessful) {
-                recyclerView.adapter = BookAdapter(response.body() ?: emptyList()) {}
+            try {
+                val response = RetrofitClient.api.getQuieroLeer(userId)
+                if (response.isSuccessful) {
+                    recyclerView.adapter = BookAdapter(response.body() ?: emptyList()) {}
+                } else {
+                    Toast.makeText(
+                        this@ProfileActivity,
+                        "Error al cargar quiero leer",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(
+                    this@ProfileActivity,
+                    "Fallo: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

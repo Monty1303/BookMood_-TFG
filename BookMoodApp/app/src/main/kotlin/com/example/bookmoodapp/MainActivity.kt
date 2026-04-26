@@ -11,6 +11,10 @@ import androidx.lifecycle.lifecycleScope
 import android.widget.Toast
 import android.util.Log
 import java.lang.Exception
+import android.widget.Button
+import com.example.bookmoodapp.BooksActivity
+import com.example.bookmoodapp.R
+
 
 
 
@@ -20,10 +24,18 @@ import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerViewMoods: RecyclerView
+    private lateinit var btnProfile: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        btnProfile = findViewById(R.id.btnProfile)
+
+        btnProfile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         recyclerViewMoods = findViewById(R.id.recyclerViewMoods)
         recyclerViewMoods.layoutManager = LinearLayoutManager(this)

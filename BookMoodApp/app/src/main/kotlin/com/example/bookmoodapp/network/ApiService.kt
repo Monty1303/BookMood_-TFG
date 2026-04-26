@@ -2,6 +2,7 @@ package com.example.bookmoodapp.network
 import com.example.bookmoodapp.model.EstadoAnimo
 import com.example.bookmoodapp.model.Libro
 import com.example.bookmoodapp.model.UsuarioLibroRequest
+import com.example.bookmoodapp.model.RegisterRequest
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -27,7 +28,7 @@ interface ApiService{
     suspend fun login(@Body request: LoginRequest): Response<UsuarioResponse>
 
     @POST("usuario/register")
-    suspend fun register(@Body request: UsuarioResponse): Response<UsuarioResponse>
+    suspend fun register(@Body request: RegisterRequest): Response<UsuarioResponse>
     @GET("usuario/{id}/favoritos")
     suspend fun getFavoritos(@Path("id") userId: Long): Response<List<Libro>>
 

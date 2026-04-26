@@ -38,7 +38,8 @@ class BookDetailActivity : AppCompatActivity() {
         btnFavorite = findViewById(R.id.btnFavorite)
         btnRead = findViewById(R.id.btnRead)
         btnWantToRead = findViewById(R.id.btnWantToRead)
-        userId=2
+        val sharedPref = getSharedPreferences("bookmood", MODE_PRIVATE)
+        userId = sharedPref.getLong("userId", -1)
 
         bookId = intent.getLongExtra("bookId", -1)
         val bookTitle = intent.getStringExtra("bookTitle")?: "Sin título"
