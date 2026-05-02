@@ -4,8 +4,11 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
     android:layout_marginBottom="8dp"
-    android:background="@android:color/darker_gray">
+    android:background="@drawable/card_book">
 
     <TextView
         android:id="@+id/textMoodName"
@@ -14,13 +17,13 @@
         android:text="Nombre del estado de ánimo"
         android:textStyle="bold"
         android:textSize="18sp"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/text_primary" />
     <TextView
         android:id="@+id/textMoodDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Descripción del estado de ánimo"
-        android:textColor="@android:color/white"
+        android:textColor="@color/text_secondary"
         android:layout_marginTop="4dp"/>
 
 </LinearLayout>

@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 
 
 
+
 class BookAdapter (
     private val books: List<Libro>,
     private val onBookClick: (Libro) -> Unit
@@ -23,6 +24,8 @@ class BookAdapter (
         val textBookTitle: TextView = itemView.findViewById(R.id.textBookTitle)
         val textBookAuthor: TextView = itemView.findViewById(R.id.textBookAuthor)
         val imageBookCover: ImageView = itemView.findViewById(R.id.imageBookCover)
+        val textBookDescription: TextView = itemView.findViewById(R.id.textBookDescription)
+        val textBookGender: TextView = itemView.findViewById(R.id.textBookGender)
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -34,8 +37,12 @@ class BookAdapter (
         val book = books[position]
         holder.textBookTitle.text = book.titulo
         holder.textBookAuthor.text = book.autor ?:"Autor no disponible"
+        holder.textBookDescription.text = book.sinopsis ?: "Descripción no disponible"
+        holder.textBookGender.text = book.genero ?: "Género no disponible"
         Glide.with(holder.itemView.context)
             .load(book.portadaUrl)
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_launcher_background)
             .into(holder.imageBookCover)
         holder.itemView.setOnClickListener { onBookClick(book) }
     }

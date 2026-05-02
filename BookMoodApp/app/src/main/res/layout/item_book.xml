@@ -2,32 +2,68 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:layout_marginBottom="8dp"
-    android:background="@android:color/white">
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:layout_margin="8dp"
+    android:background="@drawable/card_book">
 
     <ImageView
         android:id="@+id/imageBookCover"
-        android:layout_width="80dp"
-        android:layout_height="120dp"
+        android:layout_width="85dp"
+        android:layout_height="130dp"
         android:scaleType="centerCrop"
-        android:contentDescription="Portada del libro" />
+        android:clipToOutline="true"
+        android:background="@drawable/image_rounded"/>
 
-    <TextView
-        android:id="@+id/textBookTitle"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Título"
-        android:textStyle="bold"
-        android:textSize="18sp"/>
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="14dp">
 
-    <TextView
-        android:id="@+id/textBookAuthor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Autor"
-        android:layout_marginTop="4dp"/>
+        <TextView
+            android:id="@+id/textBookTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Título del libro"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:textColor="@color/text_primary" />
 
+        <TextView
+            android:id="@+id/textBookAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Autor"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textBookDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción del libro..."
+            android:layout_marginTop="6dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:maxLines="3"
+            android:ellipsize="end" />
+        <TextView
+            android:id="@+id/textBookGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Género"
+            android:layout_marginTop="4dp"
+            android:textSize="12sp"
+            android:textColor="@color/primary"
+            android:background="#EEEAFE"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

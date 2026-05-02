@@ -10,6 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bookmoodapp.network.RetrofitClient
 import com.example.bookmoodapp.ui.BookAdapter
 import kotlinx.coroutines.launch
+import java.lang.Exception
+import android.view.View
+import android.widget.TextView
+import com.example.bookmoodapp.model.Libro
+
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -17,6 +22,8 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var btnFavoritos: Button
     private lateinit var btnLeidos: Button
     private lateinit var btnQuieroLeer: Button
+    private lateinit var textEmptyProfile: TextView
+
 
     private var userId: Long = -1
 
@@ -28,6 +35,8 @@ class ProfileActivity : AppCompatActivity() {
         btnFavoritos = findViewById(R.id.btnFavoritos)
         btnLeidos = findViewById(R.id.btnLeidos)
         btnQuieroLeer = findViewById(R.id.btnQuieroLeer)
+        textEmptyProfile = findViewById(R.id.textEmptyProfile)
+
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -52,7 +61,7 @@ class ProfileActivity : AppCompatActivity() {
             try {
                 val response = RetrofitClient.api.getFavoritos(userId)
                 if (response.isSuccessful) {
-                    recyclerView.adapter = BookAdapter(response.body() ?: emptyList()) {}
+                    mostrarLibros(response.body() ?: emptyList())
                 } else {
                     Toast.makeText(
                         this@ProfileActivity,
@@ -75,7 +84,7 @@ class ProfileActivity : AppCompatActivity() {
             try {
                 val response = RetrofitClient.api.getLeidos(userId)
                 if (response.isSuccessful) {
-                    recyclerView.adapter = BookAdapter(response.body() ?: emptyList()) {}
+                    mostrarLibros(response.body() ?: emptyList())
                 } else {
                     Toast.makeText(
                         this@ProfileActivity,
@@ -98,7 +107,7 @@ class ProfileActivity : AppCompatActivity() {
             try {
                 val response = RetrofitClient.api.getQuieroLeer(userId)
                 if (response.isSuccessful) {
-                    recyclerView.adapter = BookAdapter(response.body() ?: emptyList()) {}
+                    mostrarLibros(response.body() ?: emptyList())
                 } else {
                     Toast.makeText(
                         this@ProfileActivity,
@@ -113,6 +122,19 @@ class ProfileActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        }
+    }
+
+    private fun mostrarLibros(libros: List<Libro>) {
+        if (libros.isEmpty()) {
+            textEmptyProfile.visibility = View.VISIBLE
+            recyclerView.visibility = View.GONE
+        } else {
+            textEmptyProfile.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
+            recyclerView.adapter = BookAdapter(libros) { }
+
+
         }
     }
 }

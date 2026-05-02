@@ -58,6 +58,8 @@ class BookDetailActivity : AppCompatActivity() {
         textBookDescription.text = bookDescription
         Glide.with(this)
             .load(bookImageUrl)
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_launcher_background)
             .into(imageBookCover)
         btnFavorite.setOnClickListener {
             saveUserBook(favorito = true, leido = false, quieroLeer = false)
