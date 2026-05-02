@@ -36,7 +36,7 @@ public class GoogleBooksService {
 
     public List<GoogleBookDto> buscarLibrosPorTitulo (String titulo){
         String url = "https://www.googleapis.com/books/v1/volumes?q=" + titulo.replace(" ","+")
-                + "&langRestrict=es&maxResults=20";
+                + "&langRestrict=es"+ "&maxResults=20"+"&orderBy=newest"+"&printType=books";
         String response = restTemplate.getForObject(url, String.class);
         List<GoogleBookDto> resultados = new ArrayList<>();
 
