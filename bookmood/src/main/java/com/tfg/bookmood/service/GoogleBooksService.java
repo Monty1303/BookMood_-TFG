@@ -8,6 +8,8 @@ import com.tfg.bookmood.repository.EstadoAnimoRepository;
 import com.tfg.bookmood.repository.LibroEstadoAnimoRepository;
 import com.tfg.bookmood.repository.LibroRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,15 +38,17 @@ public class GoogleBooksService {
 
     public List<GoogleBookDto> buscarLibrosPorTitulo (String titulo){
         String url = "https://www.googleapis.com/books/v1/volumes?q=" + titulo.replace(" ","+")
-                + "&langRestrict=es"+ "&maxResults=20"+"&orderBy=newest"+"&printType=books";
-        String response = restTemplate.getForObject(url, String.class);
+                + "&langRestrict=es"+ "&maxResults=13"+"&orderBy=newest"+"&printType=books"
+                +"&key=AIzaSyA4TPy05qRBRSQSVmLN_fj_W2I7IgGWNN8";
+
         List<GoogleBookDto> resultados = new ArrayList<>();
 
         try {
+            String response = restTemplate.getForObject(url, String.class);
             JsonNode root = objectMapper.readTree(response);
             JsonNode items = root.get("items");
 
-            if (items != null && items.isArray()){
+            if (items != null && items.isArray()) {
                 for (JsonNode item : items) {
                     JsonNode volumeInfo = item.path("volumeInfo");
 
@@ -68,6 +72,13 @@ public class GoogleBooksService {
 
                 }
             }
+        } catch (HttpServerErrorException.ServiceUnavailable e) {
+
+            System.out.println("Google Books no disponible temporalmente");
+            return resultados;
+        } catch (RestClientException e) {
+            System.out.println("Error llamando a Google Books: " + e.getMessage());
+            return resultados;
         }catch (Exception e){
             throw new RuntimeException("Error al procesar la petición de Google Books", e);
         }
