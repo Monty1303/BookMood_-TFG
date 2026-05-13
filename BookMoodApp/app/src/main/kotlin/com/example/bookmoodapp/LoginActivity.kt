@@ -57,7 +57,9 @@ class LoginActivity : AppCompatActivity(){
                     val user = response.body()
                     if(user != null){
                         val sharedPref = getSharedPreferences("bookmood", MODE_PRIVATE)
-                        sharedPref.edit().putLong("userId", user.idUsuario).apply()
+                        sharedPref.edit().putLong("userId", response.body()!!.idUsuario)
+                            .putString("userName",response.body()!!.nombre)
+                            .apply()
 
                         Toast.makeText(this@LoginActivity, "Login Correcto", Toast.LENGTH_SHORT).show()
 

@@ -16,7 +16,10 @@ import android.widget.TextView
 import com.example.bookmoodapp.model.Libro
 
 
+
+
 class ProfileActivity : AppCompatActivity() {
+    private lateinit var textUserName: TextView
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var btnFavoritos: Button
@@ -30,7 +33,7 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
+        textUserName = findViewById(R.id.textUserName)
         recyclerView = findViewById(R.id.recyclerViewProfile)
         btnFavoritos = findViewById(R.id.btnFavoritos)
         btnLeidos = findViewById(R.id.btnLeidos)
@@ -42,6 +45,9 @@ class ProfileActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("bookmood", MODE_PRIVATE)
         userId = sharedPref.getLong("userId", -1)
+        val userName = sharedPref.getString("userName", "usuario")
+        textUserName.text = "Hola, $userName"
+
 
         if (userId == -1L) {
             Toast.makeText(this, "Usuario no autenticado", Toast.LENGTH_SHORT).show()
