@@ -13,6 +13,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,8 @@ public class GoogleBooksService {
     private final LibroRepository libroRepository;
     private final EstadoAnimoRepository estadoAnimoRepository;
     private final LibroEstadoAnimoRepository libroEstadoAnimoRepository;
+    @Value("${google.books.api.key}")
+    private String googleBooksApiKey;
 
     public GoogleBooksService(
             LibroRepository libroRepository,
@@ -39,7 +42,7 @@ public class GoogleBooksService {
     public List<GoogleBookDto> buscarLibrosPorTitulo (String titulo){
         String url = "https://www.googleapis.com/books/v1/volumes?q=" + titulo.replace(" ","+")
                 + "&langRestrict=es"+ "&maxResults=13"+"&orderBy=newest"+"&printType=books"
-                +"&key=AIzaSyA4TPy05qRBRSQSVmLN_fj_W2I7IgGWNN8";
+                +"&key="+ googleBooksApiKey;
 
         List<GoogleBookDto> resultados = new ArrayList<>();
 
