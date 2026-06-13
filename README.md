@@ -26,7 +26,7 @@ La aplicación permite:
 - Material Design
 
 ### Backend
-- Spring Boot
+- SpringBoot
 - API REST
 - JWT Authentication
 
@@ -62,26 +62,27 @@ El proyecto sigue una arquitectura cliente-servidor:
 
 ---
 ## 📸 Capturas de pantalla
+
 ### Inicio de sesión
-![Login](screenshots/Pantalla_Inicio.png)
+![Iniciar sesión](screenshots/Pantalla_Inicio.png)
 
-### Crear Cuenta Nuevo Usuario 
-![NuevaCuenta](screenshots/Pantalla_NuevoUsuario.png)
+### Crear cuenta nuevo usuario
+![Nueva cuenta](screenshots/Pantalla_NuevoUsuario.png)
 
-### Selección de Estado de Ánimo 
-![Estado de ánimo ](screenshots/Pantalla_Mood.png)
+### Selección de estado de ánimo
+![Estado de ánimo](screenshots/Pantalla_Mood.png)
 
-### Recomendaciones de libro 
-![Recomendacione ](screenshots/Pantalla_Carrusel.png)
+### Recomendaciones de libro
+![Recomendación](screenshots/Pantalla_Carrusel.png)
 
-### Detalle del libro 
-![Detalle ](screenshots/Pantalla_Descripcion.png)
+### Detalle del libro
+![Detalle](screenshots/Pantalla_Descripcion.png)
 
-### Selección para añadir a perfil de usuario
-![Seleccion ](screenshots/Pantalla_Seleccion.png)
+### Selección para añadir un perfil de usuario
+![Selección](screenshots/Pantalla_Seleccion.png)
 
-### Perfil de Usuario 
-![Perfil ](screenshots/Pantalla_PerfilUsuario.png)
+### Perfil de usuario
+![Perfil](screenshots/Pantalla_PerfilUsuario.png)
 
 ---
 
