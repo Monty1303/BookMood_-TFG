@@ -63,26 +63,26 @@ El proyecto sigue una arquitectura cliente-servidor:
 ---
 ## 📸 Capturas de pantalla
 
-### Inicio de sesión
-![Iniciar sesión](BookMoodApp/app/screenshots/Pantalla_Inicio.png)
+<h3>Inicio de sesión</h3>
+<img src="BookMoodApp/app/screenshots/Pantalla_Inicio.png" width="200">
 
-### Crear cuenta nuevo usuario
-![Nueva cuenta](BookMoodApp/app/screenshots/Pantalla_NuevoUsuario.png)
+<h3>Crear cuenta nuevo usuario</h3>
+<img src="BookMoodApp/app/screenshots/Pantalla_NuevoUsuario.png" width="200">
 
-### Selección de estado de ánimo
-![Estado de ánimo](BookMoodApp/app/screenshots/Pantalla_Mood.png)
+<h3>Selección de estado de ánimo</h3>
+<img src="BookMoodApp/app/screenshots/Pantalla_Mood.png" width="200">
 
-### Recomendaciones de libro
-![Recomendación](BookMoodApp/app/screenshots/Pantalla_Carrusel.png)
+<h3>Recomendaciones de libro</h3>
+<img src="BookMoodApp/app/screenshots/Pantalla_Carrusel.png" width="200">
 
-### Detalle del libro
-![Detalle](BookMoodApp/app/screenshots/Pantalla_Descripcion.png)
+<h3>Detalle del libro</h3>
+<img src="BookMoodApp/app/screenshots/Pantalla_Descripcion.png" width="200">
 
-### Selección para añadir un perfil de usuario
-![Selección](BookMoodApp/app/screenshots/Pantalla_Seleccion.png)
+<h3>Selección de perfil</h3>
+<img src="BookMoodApp/app/screenshots/Pantalla_Seleccion.png" width="200">
 
-### Perfil de usuario
-![Perfil](BookMoodApp/app/screenshots/Pantalla_PerfilUsuario.png)
+<h3>Perfil de usuario</h3>
+<img src="BookMoodApp/app/screenshots/Pantalla_PerfilUsuario.png" width="200">
 
 ---
 
