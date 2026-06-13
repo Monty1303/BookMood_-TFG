@@ -85,12 +85,45 @@ El proyecto sigue una arquitectura cliente-servidor:
 <img src="BookMoodApp/app/screenshots/Pantalla_PerfilUsuario.png" width="200">
 
 ---
+## 🔧 Retos técnicos
+
+- Implementación de autenticación JWT entre la aplicación Android y el backend.
+- Integración con Google Books API para la obtención de información de libros.
+- Gestión de favoritos y listas de lectura persistidas en MySQL.
+- Comunicación cliente-servidor mediante API REST desarrollada con Spring Boot.
+- Diseño de una experiencia de usuario basada en estados emocionales.
+
+---
 
 ## 🚀 Estado del proyecto
 
 Proyecto desarrollado como Trabajo de Fin de Grado (TFG) para el ciclo DAM.
 
 Actualmente el proyecto continúa en desarrollo y presenta posibilidades de ampliación futura.
+
+---
+## 🔮 Mejoras futuras
+
+- Sistema de recomendaciones basado en inteligencia artificial.
+- Integración con reseñas y valoraciones de usuarios.
+- Sincronización entre dispositivos.
+- Estadísticas personalizadas de lectura.
+- Recomendaciones más precisas mediante aprendizaje automático.
+
+---
+## ⚙️ Instalación
+
+### Backend
+
+1. Clonar el repositorio.
+2. Configurar la base de datos MySQL.
+3. Ejecutar la aplicación Spring Boot.
+
+### Aplicación Android
+
+1. Abrir el proyecto en Android Studio.
+2. Configurar la URL de la API.
+3. Ejecutar la aplicación en un dispositivo o emulador.
 
 ---
 
