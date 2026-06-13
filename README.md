@@ -61,6 +61,27 @@ El proyecto sigue una arquitectura cliente-servidor:
 - Perfil de usuario
 
 ---
+## 📸 Capturas de pantalla
+### Inicio de sesión
+![Login] (screenshots/Pantalla_Inicio.png)
+
+### Crear Cuenta Nuevo Usuario 
+![NuevaCuenta] (screenshots/Pantalla_NuevoUsuario.png)
+
+### Selección de Estado de Ánimo 
+![Estado de ánimo ] (screenshots/Pantalla_Mood.png)
+
+### Recomendaciones de libro 
+![Recomendacione ] (screenshots/Pantalla_Carrusel.png)
+
+### Detalle del libro 
+![Detalle ] (screenshots/Pantalla_Descripcion.png)
+
+### Selección para añadir a perfil de usuario
+![Seleccion ] (screenshots/Pantalla_Seleccion.png)
+
+### Perfil de Usuario 
+![Perfil ] (screenshots/Pantalla_PerfilUsuario.png)
 
 ## 🚀 Estado del proyecto
 
