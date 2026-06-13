@@ -102,4 +102,4 @@ Trabajo de Fin de Grado – Desarrollo de Aplicaciones Multiplataforma
 
  ## 📌 Licencia
 
-Proyecto desarrollado con fines educativos.
+Proyecto desarrollado con un fin educativo.
