@@ -64,25 +64,25 @@ El proyecto sigue una arquitectura cliente-servidor:
 ## 📸 Capturas de pantalla
 
 ### Inicio de sesión
-![Iniciar sesión](screenshots/Pantalla_Inicio.png)
+![Iniciar sesión](BookMoodApp/app/screenshots/Pantalla_Inicio.png)
 
 ### Crear cuenta nuevo usuario
-![Nueva cuenta](screenshots/Pantalla_NuevoUsuario.png)
+![Nueva cuenta](BookMoodApp/app/screenshots/Pantalla_NuevoUsuario.png)
 
 ### Selección de estado de ánimo
-![Estado de ánimo](screenshots/Pantalla_Mood.png)
+![Estado de ánimo](BookMoodApp/app/screenshots/Pantalla_Mood.png)
 
 ### Recomendaciones de libro
-![Recomendación](screenshots/Pantalla_Carrusel.png)
+![Recomendación](BookMoodApp/app/screenshots/Pantalla_Carrusel.png)
 
 ### Detalle del libro
-![Detalle](screenshots/Pantalla_Descripcion.png)
+![Detalle](BookMoodApp/app/screenshots/Pantalla_Descripcion.png)
 
 ### Selección para añadir un perfil de usuario
-![Selección](screenshots/Pantalla_Seleccion.png)
+![Selección](BookMoodApp/app/screenshots/Pantalla_Seleccion.png)
 
 ### Perfil de usuario
-![Perfil](screenshots/Pantalla_PerfilUsuario.png)
+![Perfil](BookMoodApp/app/screenshots/Pantalla_PerfilUsuario.png)
 
 ---
 
